@@ -3,8 +3,9 @@ const bcrypt = require("bcryptjs");
 const cors = require("cors");
 var knex = require("knex");
 
-const register = require("./controllers/register");
 const signin = require("./controllers/signin");
+const register = require("./controllers/register");
+const explore = require("./controllers/explore");
 
 const db = knex({
   client: "pg",
@@ -33,6 +34,10 @@ app.post("/signin", (req, res) => {
 
 app.post("/register", (req, res) => {
   register.handleRegister(req, res, db, bcrypt);
+});
+
+app.post("/explore", (req, res) => {
+  explore.handleApiCall(req, res);
 });
 
 app.listen(3000, () => {
