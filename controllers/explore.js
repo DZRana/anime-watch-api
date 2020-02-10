@@ -5,7 +5,7 @@ const handleApiCall = async (req, res) => {
     const results = await jikanjs.search("anime", req.body.input);
     return res.json(results);
   } catch (err) {
-    console.log(err);
+    res.status(400).json("unable to work with API");
   }
 };
 

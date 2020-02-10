@@ -6,6 +6,7 @@ var knex = require("knex");
 const signin = require("./controllers/signin");
 const register = require("./controllers/register");
 const explore = require("./controllers/explore");
+const watchlist = require("./controllers/watchlist");
 
 const db = knex({
   client: "pg",
@@ -38,6 +39,10 @@ app.post("/register", (req, res) => {
 
 app.post("/explore", (req, res) => {
   explore.handleApiCall(req, res);
+});
+
+app.put("/watchlist", (req, res) => {
+  watchlist.handleWatchlistUpdate(req, res, db);
 });
 
 app.listen(3000, () => {
