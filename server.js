@@ -11,12 +11,8 @@ const watchlist = require("./controllers/watchlist");
 const db = knex({
   client: "pg",
   connection: {
-    host: "127.0.0.1",
-    user: "postgres",
-    password: "secret",
-    database: "anime-watch"
-    //connectionString: process.env.DATABASE_URL,
-    //ssl: true
+    connectionString: process.env.DATABASE_URL,
+    ssl: true
   }
 });
 
