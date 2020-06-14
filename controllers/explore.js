@@ -1,8 +1,8 @@
-const jikanjs = require("jikanjs");
-
 const handleApiCall = async (req, res) => {
   try {
-    const results = await jikanjs.search("anime", req.body.input);
+    const results = await fetch(
+      `https://api.jikan.moe/v3/search/anime?q=${req.body.input}&page=1`
+    );
     return res.json(results);
   } catch (err) {
     res.status(400).json("unable to work with API");
@@ -10,5 +10,5 @@ const handleApiCall = async (req, res) => {
 };
 
 module.exports = {
-  handleApiCall
+  handleApiCall,
 };
